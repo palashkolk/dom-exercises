@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="btn">Test</button>
+    <script>
+        let btn =document.querySelector(".btn");
+        btn.addEventListener('click', ()=> {alert('Mouse clicked')});
+        for(let i=1; i<=5; i++){
+            let clickEvent=new Event('click');
+            btn.dispatchEvent(clickEvent);
+            console.log(clickEvent.isTrusted);
+
+        }
+        // console.log(clickEvent.isTrusted);
+
+    </script>
+</body>
+</html>
