@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Custom Event Demo</title>
+</head>
+<body>
+    <div class="note">JS Custom Event Demo</div>
+    <script>
+        let note = document.querySelector('.note');
+        highlight(note, addBorder);
+
+
+        function highlight(elem, callback) {
+            const bgColor = 'black';
+            const txtColor ='white';
+            elem.style.backgroundColor = bgColor;
+            elem.style.color = txtColor;
+            
+
+            if (callback && typeof callback === 'function') {
+                callback(elem);
+            }
+        }
+
+        function addBorder(elem) {
+            elem.style.border = "solid 2px red";
+        }
+
+    </script>
+</body>
+</html>
