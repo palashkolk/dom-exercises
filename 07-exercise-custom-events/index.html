@@ -8,26 +8,31 @@
 <body>
     <div class="note">JS Custom Event Demo</div>
     <script>
-        let note = document.querySelector('.note');
-        highlight(note, addBorder);
+        // let note = document.querySelector('.note');
+        // highlight(note, addBorder);
 
 
-        function highlight(elem, callback) {
+        function highlight(elem) {
             const bgColor = 'black';
-            const txtColor ='white';
             elem.style.backgroundColor = bgColor;
+            const txtColor ='white';
             elem.style.color = txtColor;
             
-
-            if (callback && typeof callback === 'function') {
-                callback(elem);
-            }
+            let event=new CustomEvent('highlight', {detail:{backgroundColor:bgColor, color:txtColor}});
+            elem.dispatchEvent(event);
         }
-
+        
         function addBorder(elem) {
             elem.style.border = "solid 2px red";
         }
 
-    </script>
+        let div=document.querySelector(".note");
+        div.addEventListener('highlight', function(e){
+            addBorder(this);
+            console.log(e.detail);
+        });
+        highlight(div);
+
+        </script>
 </body>
 </html>
